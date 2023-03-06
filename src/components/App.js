@@ -3,15 +3,21 @@ import { todoReducer } from '../reducers/todo';
 import '../styles/App.css';
 import { AddTodo } from './AddTodo';
 import { Todo } from './Todo';
+
+export const myContext = React.createContext();
 const App = () => {
-  const [state,dispatch] = useReducer(todoReducer,{/* Initial todo state array, could be an array for storing indivial todo objects */})
-  
- 
+  const [state, dispatch] = useReducer(todoReducer, [])
+
+
   return (
-    <div id="main">
-      <AddTodo />
-     {/* Render list of Todo Components here */}
-    </div>
+    <myContext.Provider value={{ todoState: state, dispatchFun: dispatch }}>
+      <div id="main">
+        <AddTodo dispatch={dispatch} />
+        <ul>
+          {state.map((todo) => <Todo todoObj={todo} />)}
+        </ul>
+      </div>
+    </myContext.Provider>
   )
 }
 
