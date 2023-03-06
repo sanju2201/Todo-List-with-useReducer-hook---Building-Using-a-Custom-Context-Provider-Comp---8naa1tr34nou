@@ -18,8 +18,9 @@ const AddTodo = ({ dispatch }) => {
         <>
             <form id="todo-form" onSubmit={handleForm}>
                 <input type={"text"} id="todo-input" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-                <input type="submit" value="ADD TODO" />
-                {console.log("FORM")}
+                {/* <input type="submit" value="ADD TODO" /> */}
+                <button type="submit">Add Todo</button>
+
             </form>
         </>
     )
